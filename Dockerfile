@@ -19,7 +19,11 @@ RUN npm config set registry http://si-nexus-forge-rec.pcy.edf.fr/repository/npm/
 	&& npm install \
 	&& npm config rm proxy \
 	&& npm config rm https-proxy \
-	&& npm config rm no-proxy
+	&& npm config rm no-proxy \
+	&& unset HTTP_PROXY \
+	&& unset HTTPS_PROXY \
+	&& unset http_proxy \
+	&& unset https_proxy
 
 COPY . /usr/src/app
 
