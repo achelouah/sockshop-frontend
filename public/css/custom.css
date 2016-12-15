@@ -1,1 +1,5 @@
 /** Your theme modifications here **/
+#top {
+  background: #FF7F50;
+  padding: 10px 0;
+}
