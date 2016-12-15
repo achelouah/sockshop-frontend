@@ -12,18 +12,9 @@ USER myuser
 # Prepare app directory
 WORKDIR /usr/src/app
 COPY package.json /usr/src/app/
-RUN npm config set registry http://si-nexus-forge-rec.pcy.edf.fr/repository/npm/ \
-	&& npm config set proxy ${LAFORGE_PROXY} \
-	&& npm config set https-proxy ${LAFORGE_PROXY} \
-	&& npm config set no-proxy .edf.fr \
-	&& npm install \
-	&& npm config rm proxy \
-	&& npm config rm https-proxy \
-	&& npm config rm no-proxy \
-	&& unset HTTP_PROXY \
-	&& unset HTTPS_PROXY \
-	&& unset http_proxy \
-	&& unset https_proxy
+RUN npm install
+
+ENV HTTP_PROXY= HTTPS_PROXY= http_proxy= https_proxy=
 
 COPY . /usr/src/app
 
